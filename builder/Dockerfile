@@ -1,7 +1,7 @@
 # USAGE `docker build -f builder/Dockerfile .`
 
 ### BUILDER ###
-FROM node:18-alpine AS builder
+FROM node:18.20.6-alpine AS builder
 
 COPY . /build
 WORKDIR /build
@@ -15,7 +15,7 @@ RUN npm run build
 EXPOSE 4000
 
 ### PRODUCTION ###
-FROM node:18-alpine
+FROM node:18.20.6-alpine
 
 ENV NODE_ENV=production
 COPY --from=builder /build .
